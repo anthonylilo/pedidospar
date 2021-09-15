@@ -104,8 +104,9 @@ class Pedidos{
   }
 
   public function getAllByUser(){
-    $sql = "SELECT p.*, cl.nombre FROM pedidos p "
-    . "INNER JOIN clientes cl ON cl.id = p.cliente_id " 
+    $sql = "SELECT p.*, cl.nombre, uss.nombre AS 'vendedor' FROM pedidos p "
+    . "INNER JOIN clientes cl ON cl.id = p.cliente_id "
+    . "INNER JOIN usuarios uss ON uss.id = p.usuario_id "
     . "WHERE p.usuario_id = {$this->getUsuario_id()} ORDER BY p.id DESC";
 
     $pedido = $this->db->query($sql);

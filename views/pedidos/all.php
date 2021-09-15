@@ -27,7 +27,7 @@
                 <tr>
                     <td><?=$ped->id?></td>
                     <?php if(isset($_SESSION['admin'])): ?>
-                      <td><?=$ped->ussname?></td>
+                      <td><?=$ped->vendedor?></td>
                     <?php endif; ?>
                     <td><?=$ped->nombre?></td>
                     <td><?=number_format($ped->total, 2, ".", "," )?></td>
