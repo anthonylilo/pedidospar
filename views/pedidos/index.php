@@ -62,7 +62,8 @@
                                                         name="TotalVentaGeneral"
                                                         type="text"
                                                         value="0"
-                                                        class="form-control bg-danger text-center"
+                                                        class="form-control text-center"
+                                                        style="color:red; font-weight: bold"
                                                         id="TotalVenta"
                                                         placeholder="Username">
                                                     <input name="IdUser" value="1" type="hidden">
@@ -78,7 +79,7 @@
                                                     <th>Quitar</th>
                                                     <th>Producto</th>
                                                     <th>Precio</th>
-                                                    <th>Cantidad</th>
+                                                    <th>Cant</th>
                                                     <th>Total</th>
                                                 </tr>
                                             </thead>
