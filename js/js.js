@@ -38,7 +38,7 @@ $('.eliminar_cliente').click(function (e) {
         if (willDelete) {
             $
                 .ajax({
-                    url: 'http://localhost/paginas/Cobranzas/clientes/eliminar',
+                    url: 'http://localhost/micropar-pedidos/clientes/eliminar',
                     type: 'POST',
                     async: true,
                     data: {
@@ -84,7 +84,7 @@ $('.eliminar_producto').click(function (e) {
         if (willDelete) {
             $
                 .ajax({
-                    url: 'http://localhost/paginas/micropar-pedidos/productos/eliminar',
+                    url: 'http://localhost/micropar-pedidos/productos/eliminar',
                     type: 'POST',
                     async: true,
                     data: {
@@ -110,34 +110,29 @@ $('.eliminar_producto').click(function (e) {
 //</ELIMINAR producto
 
 //NOTE: Buscador con ajax.
-function numberWithCommas(x) {  
-    var parts = x.toString().split(",");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d)\.?)/g, "," , ".");
-    return parts.join(".");
+$(document).on('keyup', '.table_search', function(){
+
+    var valor = $(this).val();
+        if(valor.length >= 3){
+            buscar_datos(valor);
+        }else{
+            buscar_datos();
+        }
+    
+});
+
+const formatoMexico = (number) => {
+    const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+    const rep = '$1.';
+    let arr = number.toString().split(',');
+    arr[0] = arr[0].replace(exp,rep);
+    return arr[1] ? arr.join(','): arr[0];
 }
 
-function format(input) {
-    var num = input.value.replace(/\,/g, '');
-    var decimales = "";
-    if (num.indexOf(".") >= 0) { 
-      decimales = "." + num.split(".")[1].substring(0,2); // sólo nos quedamos con los dos primeros decimales
-      num = Math.floor(num); // redondeamos hacia abajo para quedarnos con la parte entera
-    }
-    if (!isNaN(num)) {
-      num = num.toString().split('').reverse().join('').replace(/(?=\d*\,?)(\d{3})/g, '$1,');
-      // añadir los decimales al final!
-      num = num.split('').reverse().join('').replace(/^[\,]/, '') + decimales;
-      input.value = num;
-    }
-    else {
-      alert('Solo se permiten numeros');
-      input.value = input.value.replace(/[^\d\,\.]*/g, '');
-    }
-}
 
 function buscar_datos(consulta){
 	$.ajax({
-		url : 'http://localhost/paginas/micropar-pedidos/pedido/buscar',
+		url : 'http://localhost/micropar-pedidos/pedido/buscar',
 		type : 'POST',
 		dataType : 'html',
         async : true,
@@ -163,9 +158,12 @@ function buscar_datos(consulta){
         
             var idprod = $(this).attr('IP');
             var nombreProd = $(this).attr('NP');
-            var precioProd = $(this).attr('PP');
+            var precioProd = $(this).attr('PP').replaceAll(',', '.');
 
             var totalProd = precioProd * CantProd;
+
+            var TotalClear = formatoMexico(totalProd);
+            var precioProdClear = formatoMexico(precioProd-0);
 
             if (! $("#dltprod"+idprod).length){
                 
@@ -174,10 +172,11 @@ function buscar_datos(consulta){
                         '<td><button class="btn btn-danger" np2='+ nombreProd +' id="dltprod'+idprod+'">x</button></td>'+
                         '<input name="IdProd[]" value=' + idprod + ' type="hidden">' +
                         '<td>' + nombreProd + '</td>'+
-                        '<td><input readonly name="PrecProdV[]" type="number" value="' + precioProd + '" id="precio'+idprod+'" class="bg-danger text-center precioPV w-50"></td>'+
-                        '<td><input name="CantProdV[]" class="w-25" type="text" min="1" value="' + CantProd + '" id="canti'+idprod+'" ></td>'+
-                        '<td><input readonly name="TotalProdV[]" type="number" value="' + totalProd + '" id="resultado'+idprod+'" class="bg-danger text-center total-fila w-50"></td>'+
-                    '</tr>'+CalcularTotalVenta()
+                        '<td><input readonly name="PrecProdV[]" type="text" value="' + precioProdClear + '" id="precio'+idprod+'" class="bg-danger text-center precioPV w-80"></td>'+
+                        '<td><input name="CantProdV[]" class="w-50" type="text" min="1" value="' + CantProd + '" id="canti'+idprod+'" ></td>'+
+                        '<td><input readonly name="TotalProdV[]" type="text" value="' + TotalClear + '" id="resultado'+idprod+'" class="bg-danger text-center total-fila w-80"></td>'+
+                    '</tr>',
+                    CalcularTotalVenta()
                 );
                 
                 $('#CantProd').val("");
@@ -196,7 +195,7 @@ function buscar_datos(consulta){
                 CantidadEnVentas.value = CantProd;
 
                 var TotalVentas = document.getElementById("resultado"+idprod);
-                TotalVentas.value = totalProd;
+                TotalVentas.value = TotalClear;
                 
                 CalcularTotalVenta();
                 $('#CantProd').val("");
@@ -209,12 +208,14 @@ function buscar_datos(consulta){
                 jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
 
                 var precio = document.getElementById("precio"+idprod).value;
+                var precioClear = parseFloat(precio.replace('.','')) || 0;
+
                 var cantidad = document.getElementById("canti"+idprod).value;
                 var resultado = document.getElementById("resultado"+idprod);
+                
+                var totalEnCant = precioClear*cantidad
 
-                resultado.value = cantidad*precio.replaceAll(',', '.');
-                numberWithCommas(resultado.value);
-        
+                resultado.value = formatoMexico(totalEnCant);
                 CalcularTotalVenta();
             });
         
@@ -251,13 +252,16 @@ function buscar_datos(consulta){
                     var TotalVentaGeneral = document.getElementById("TotalVenta");
         
                     for(i = 0; i < parent.length; i++){
-                        // suma todos los totales de fila numberWithCommas
+                        // suma todos los totales de fila
                         var totalesFila = document.querySelectorAll(".total-fila");
                         var total = 0;
+
                         for (var x = 0; x < totalesFila.length; x++) {
-                        total += (parseInt(totalesFila[x].value) || 0);
+   
+                        total += (parseInt(totalesFila[x].value.replaceAll('.', '')) || 0);
+
                         }
-                        TotalVentaGeneral.value = numberWithCommas(total);
+                        TotalVentaGeneral.value = formatoMexico(total);
                     }
                 });
             }
@@ -267,14 +271,3 @@ function buscar_datos(consulta){
     console.log("error");
   })
 }
-
-$(document).on('keyup', '.table_search', function(){
-
-var valor = $(this).val();
-    if(valor.length >= 3){
-        buscar_datos(valor);
-    }else{
-        buscar_datos();
-    }
-
-});

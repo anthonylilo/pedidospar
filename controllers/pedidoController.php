@@ -75,7 +75,7 @@ class pedidoController{
           while($fila = $productos->fetch_object()){
             ?>
               <li style="list-style:none" class="list-group-item">
-                <button class="btn btn-warning btn-block ProdBtn" NP="<?=$fila->nombre?>" PP="<?=$fila->precio?>" IP="<?=$fila->id?>"><?=$fila->nombre?> <?=number_format($fila->precio, 2, ".", "," )?></button>
+                <button class="btn btn-warning btn-block ProdBtn" NP="<?=$fila->nombre?>" PP="<?=$fila->precio?>" IP="<?=$fila->id?>"><?=$fila->nombre?> <?=number_format($fila->precio, 2, ",", "." )?></button>
               </li>
               <br>
             <?php
