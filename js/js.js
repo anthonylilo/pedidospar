@@ -38,8 +38,8 @@ $('.eliminar_cliente').click(function (e) {
         if (willDelete) {
             $
                 .ajax({
-                    url: 'http://pedidos.micropar.com/clientes/eliminar',
-                    //url: 'http://localhost/micropar-pedidos/clientes/eliminar'
+                    //url: 'http://pedidos.micropar.com/clientes/eliminar',
+                    url: 'http://localhost/micropar-pedidos/clientes/eliminar',
                     type: 'POST',
                     async: true,
                     data: {
@@ -85,8 +85,8 @@ $('.eliminar_producto').click(function (e) {
         if (willDelete) {
             $
                 .ajax({
-                    url: 'http://pedidos.micropar.com/productos/eliminar',
-                    //url: 'http://localhost/micropar-pedidos/productos/eliminar'
+                    //url: 'http://pedidos.micropar.com/productos/eliminar',
+                    url: 'http://localhost/micropar-pedidos/productos/eliminar',
                     type: 'POST',
                     async: true,
                     data: {
@@ -134,8 +134,8 @@ const formatoMexico = (number) => {
 
 function buscar_datos(consulta){
 	$.ajax({
-		url : 'http://pedidos.micropar.com/pedido/buscar',
-        //url : 'http://localhost/micropar-pedidos/pedido/buscar'
+		//url : 'http://pedidos.micropar.com/pedido/buscar',
+        url : 'http://localhost/micropar-pedidos/pedido/buscar',
 		type : 'POST',
 		dataType : 'html',
         async : true,
@@ -274,3 +274,19 @@ function buscar_datos(consulta){
     console.log("error");
   })
 }
+
+$('#btnpedido').click(function (e){
+    e.preventDefault();
+    var form = $(this).parents('form');
+
+    swal(
+        {title: "¿Estas seguro que deseas realizar el pedido?", icon: "warning", buttons: true, dangerMode: true}
+    ).then((isConfirm) => {
+        if (isConfirm) {
+            form.submit();
+        } else if (isConfirm) {
+            
+        }
+    });
+
+}); //NOTE: final del sweet alert

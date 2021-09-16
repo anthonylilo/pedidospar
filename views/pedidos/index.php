@@ -20,11 +20,11 @@
                                 autofocus="autofocus">
                         </div>
                         <div class="col">
-                        <input
-                            type="text"
-                            name="Buscador"
-                            class="form-control table_search"
-                            placeholder="Buscar producto">
+                            <input
+                                type="text"
+                                name="Buscador"
+                                class="form-control table_search"
+                                placeholder="Buscar producto">
                         </div>
                     </div>
 
@@ -41,7 +41,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <button class="btn btn-success card-title">Realizar pedido</button>
+                                        <button class="btn btn-success card-title" id="btnpedido">Realizar pedido</button>
                                         <div class="input-group mb-3">
                                             <label>Selecciona tu cliente (Solo puedes elegir a 1)</label>
                                             <select class="form-select" name="cliente_id" required="required">

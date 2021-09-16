@@ -9,20 +9,25 @@
             </li>
         <?php else: ?>
             <li class="list-group-item">Usuario:
-                <?=$_SESSION['identity']->username?></li>
-            <li class="list-group-item">
-                <a href="<?=base_url?>productos/index">Ver/Crear/Modificar Productos</a>
-            </li>
-            <li class="list-group-item">
-                <a href="<?=base_url?>clientes/index">Ver/Crear/Modificar Clientes</a>
-            </li>
-            <li class="list-group-item">
-                <a href="<?=base_url?>pedido/listadopedido">Estado del pedido</a>
+                <?=$_SESSION['identity']->username?>
             </li>
             
             <li class="list-group-item">
-                <a href="<?=base_url?>pedido/realizar">Realizar pedido</a>
+                <a href="<?=base_url?>pedido/realizar" style="color:red;">Realizar pedido</a>
             </li>
+
+            <li class="list-group-item">
+                <a href="<?=base_url?>pedido/listadopedido">Estado del pedido</a>
+            </li>
+        
+            <li class="list-group-item">    
+                <a href="<?=base_url?>productos/index">Ver/Crear/Modificar Productos</a>
+            </li>
+
+            <li class="list-group-item">
+                <a href="<?=base_url?>clientes/index">Ver/Crear/Modificar Clientes</a>
+            </li>
+            
             <li class="list-group-item">
                 <a href="<?=base_url?>usuario/logout">Cerrar sesión</a>
             </li>
