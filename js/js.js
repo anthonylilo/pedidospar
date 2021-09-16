@@ -38,7 +38,8 @@ $('.eliminar_cliente').click(function (e) {
         if (willDelete) {
             $
                 .ajax({
-                    url: 'http://localhost/micropar-pedidos/clientes/eliminar',
+                    url: 'http://pedidos.micropar.com/clientes/eliminar',
+                    //url: 'http://localhost/micropar-pedidos/clientes/eliminar'
                     type: 'POST',
                     async: true,
                     data: {
@@ -84,7 +85,8 @@ $('.eliminar_producto').click(function (e) {
         if (willDelete) {
             $
                 .ajax({
-                    url: 'http://localhost/micropar-pedidos/productos/eliminar',
+                    url: 'http://pedidos.micropar.com/productos/eliminar',
+                    //url: 'http://localhost/micropar-pedidos/productos/eliminar'
                     type: 'POST',
                     async: true,
                     data: {
@@ -113,7 +115,7 @@ $('.eliminar_producto').click(function (e) {
 $(document).on('keyup', '.table_search', function(){
 
     var valor = $(this).val();
-        if(valor.length >= 3){
+        if(valor.length >= 2){
             buscar_datos(valor);
         }else{
             buscar_datos();
@@ -132,7 +134,8 @@ const formatoMexico = (number) => {
 
 function buscar_datos(consulta){
 	$.ajax({
-		url : 'http://localhost/micropar-pedidos/pedido/buscar',
+		url : 'http://pedidos.micropar.com/pedido/buscar',
+        //url : 'http://localhost/micropar-pedidos/pedido/buscar'
 		type : 'POST',
 		dataType : 'html',
         async : true,
@@ -172,9 +175,9 @@ function buscar_datos(consulta){
                         '<td><button class="btn btn-danger" np2='+ nombreProd +' id="dltprod'+idprod+'">x</button></td>'+
                         '<input name="IdProd[]" value=' + idprod + ' type="hidden">' +
                         '<td>' + nombreProd + '</td>'+
-                        '<td><input readonly name="PrecProdV[]" type="text" value="' + precioProdClear + '" id="precio'+idprod+'" class="bg-danger text-center precioPV w-80"></td>'+
-                        '<td><input name="CantProdV[]" class="w-50" type="text" min="1" value="' + CantProd + '" id="canti'+idprod+'" ></td>'+
-                        '<td><input readonly name="TotalProdV[]" type="text" value="' + TotalClear + '" id="resultado'+idprod+'" class="bg-danger text-center total-fila w-80"></td>'+
+                        '<td><input readonly name="PrecProdV[]" type="text" value="' + precioProdClear + '" id="precio'+idprod+'" class="text-center precioPV" style="width:70px;color:red;"></td>'+
+                        '<td><input name="CantProdV[]" style="width:50px;" type="text" min="1" value="' + CantProd + '" id="canti'+idprod+'" ></td>'+
+                        '<td><input readonly name="TotalProdV[]" type="text" value="' + TotalClear + '" id="resultado'+idprod+'" class="text-center total-fila" style="width:80px;color:red;"></td>'+
                     '</tr>',
                     CalcularTotalVenta()
                 );
