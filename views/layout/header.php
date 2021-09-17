@@ -36,13 +36,13 @@
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=base_url?>clientes/index">Ver/Crear/Modificar Clientes</a>
+                            <a class="nav-link" href="<?=base_url?>pedido/realizar">Realizar pedido</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=base_url?>pedido/listadopedido">Estado del pedido</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=base_url?>pedido/realizar">Realizar pedido</a>
+                            <a class="nav-link" href="<?=base_url?>clientes/index">Ver/Crear/Modificar Clientes</a>
                         </li>
                         <li class="nav-item">
                             <a

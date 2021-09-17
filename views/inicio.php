@@ -11,35 +11,41 @@
             <li class="list-group-item">Usuario:
                 <?=$_SESSION['identity']->username?>
             </li>
-            
+
             <li class="list-group-item">
-                <a href="<?=base_url?>pedido/realizar" style="color:red;">Realizar pedido</a>
+                <a
+                    href="<?=base_url?>pedido/realizar"
+                    class="btn btn-danger"
+                    style="color:white;">Realizar pedido</a>
             </li>
 
             <li class="list-group-item">
-                <a href="<?=base_url?>pedido/listadopedido">Estado del pedido</a>
-            </li>
-        
-            <li class="list-group-item">    
-                <a href="<?=base_url?>productos/index">Ver/Crear/Modificar Productos</a>
+                <a href="<?=base_url?>pedido/listadopedido" class="btn btn-primary">Estado del pedido</a>
             </li>
 
             <li class="list-group-item">
-                <a href="<?=base_url?>clientes/index">Ver/Crear/Modificar Clientes</a>
+                <a
+                    href="<?=base_url?>productos/index"
+                    class="btn btn-info"
+                    style="color:white;">Ver/Crear/Modificar Productos</a>
             </li>
-            
+
             <li class="list-group-item">
-                <a href="<?=base_url?>usuario/logout">Cerrar sesión</a>
+                <a href="<?=base_url?>clientes/index" class="btn btn-info" style="color:white;">Ver/Crear/Modificar Clientes</a>
             </li>
-        <?php endif;?>
+
             <?php if(isset($_SESSION['admin'])): ?>
             <li class="list-group-item">
-                <a href="<?=base_url?>pedido/gestion">Gestionar pedidos</a>
+                <a href="<?=base_url?>pedido/gestion" class="btn btn-success">Gestionar pedidos</a>
             </li>
             <li class="list-group-item">
-                <a href="<?=base_url?>usuario/register">Registrar usuario</a>
-            </li>    
-        <?php endif; ?>
+                <a href="<?=base_url?>usuario/register" class="btn btn-dark">Registrar usuario</a>
+            </li>
+            <?php endif; ?>
+            <li class="list-group-item">
+                <a href="<?=base_url?>usuario/logout" class="btn btn-warning">Cerrar sesión</a>
+            </li>
+            <?php endif;?>
         </ul>
     </div>
 </div>
