@@ -14,9 +14,11 @@ CONSTRAINT uq_username UNIQUE(username)
 
 CREATE TABLE productos(
 id            int(255) auto_increment not null,
+code          int(255) not null,
 nombre        varchar(255) not null,
 precio         decimal(12,2) not null,
-CONSTRAINT pk_productos PRIMARY KEY(id)
+CONSTRAINT pk_productos PRIMARY KEY(id),
+CONSTRAINT uq_code UNIQUE(code)
 )ENGINE=InnoDb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE clientes(
