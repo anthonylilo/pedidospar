@@ -1,0 +1,5 @@
+2;Coca Cola 300ml;60000
+3;Pepsi lata;24000
+4;mirinda;2400
+5;pilsen269ml;4000
+6;norte354ml;2000
