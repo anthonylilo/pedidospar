@@ -67,5 +67,6 @@
         //Cerrar recursos
         fclose($f);
         $db->close();
+        unlink($path);
     }
 ?>
