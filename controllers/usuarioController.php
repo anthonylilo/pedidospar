@@ -9,7 +9,7 @@ class usuarioController{
 
   public function register()
   {
-    //Utils::isAdmin();
+    Utils::isAdmin();
     require_once 'views/usuario/registro.php';
   }
 
