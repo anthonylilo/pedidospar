@@ -1,6 +1,6 @@
 <?php
 
-    $path = '../productos/productos.txt';
+    $path = '../clientes/clientes.txt';
     require_once '../configs/db.php';
 
     $db = Database::connect();
@@ -24,19 +24,20 @@
 
           if(current($data)){
 
-            $sql="SELECT * FROM productos";
+            $sql="SELECT * FROM clientes";
             $leerDb = $db->query($sql);
 
-            $code = $data[0];
-            $nombre = $data[1];
-            $precio = $data[2];
+            $nombre = $data[0];
+            $ruc = $data[1];
+            $direccion = $data[2];
+            $numero_telefono = $data[3];
 
-            while($prods = $leerDb->fetch_object()){
-              $codedb = $prods->code;
+            while($clients = $leerDb->fetch_object()){
+              $rucdb = $clients->ruc;
 
-              if($codedb == $code){
+              if($rucdb == $ruc){
 
-                $sql = "UPDATE productos SET nombre='$nombre', precio=$precio WHERE code=$code";
+                $sql = "UPDATE clientes SET nombre='$nombre', direccion='$direccion', numero_telefono=$numero_telefono WHERE ruc='$ruc'";
                 $save = $db->query($sql);
 
                 if($save){
@@ -47,7 +48,7 @@
                 
               }else{
 
-                $sql = "INSERT INTO productos VALUES(NULL, $code, '$nombre', $precio)";
+                $sql = "INSERT INTO clientes VALUES(NULL, '$nombre', '$ruc', '$direccion', $numero_telefono)";
                 $insert = $db->query($sql);
 
                 if($insert){

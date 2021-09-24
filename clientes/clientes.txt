@@ -1,3 +1,0 @@
-pedro;321-0;www.casa.com;971781444
-juan;322-1;www.home.com;971781555
-maria;333-2;www.hogar.com;971781666
