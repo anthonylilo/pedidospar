@@ -1,12 +1,5 @@
 3)Achicar formulario en pedido
 4)Tecla más y menos cantidad
 6)Precio en gs (PHP)
-8)LEER UN TXT EL CUAL CONTIENE LOS PRODUCTOS (COD;NOMBRE;PRECIO)
-
-8.1)Tiene que leer el cod de producto para realizar una comparación de lo que esta en la base de datos, si existe el cod, entonces realizará un update de los productos ya existentes, pero si no existe, se insertarán los productos en la base de datos.
-
-8.2)Primero debemos leer los codigos,lo que lea lo tiene que convertir en un array, luego de leer los codigos, debemos de rescatar los datos de la base de datos. Comparamos el cod.txt con el cod.bd, si son iguales, entonces update.
-
-8.3)En el caso de que no sean iguales o no existan, deberá de insertar.
 
 9)LEER UN TXT EL CUAL CONTIENE LOS CLIENTES (NOMBRE;RUC;UBICACION;TELEFONO)
