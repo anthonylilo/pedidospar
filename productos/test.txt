@@ -1,0 +1,9 @@
+120;Taza de vengadores;3200
+240;Termo de Cerro;2300
+9;Taza de agua;5000
+123456;Lentes de sol;25000
+456789;Bolso deportivo;42000
+789456;Termo deportivo;15000
+123;Auriculares;10000
+654;Teclado;231000
+874512;Zapatos nike;120000

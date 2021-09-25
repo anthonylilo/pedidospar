@@ -32,7 +32,8 @@
             $direccion = $data[2];
             $numero_telefono = $data[3];
 
-            while($clients = $leerDb->fetch_object()){
+            if($leerDb->num_rows){
+              while($clients = $leerDb->fetch_object()){
               $rucdb = $clients->ruc;
 
               if($rucdb == $ruc){
@@ -58,13 +59,20 @@
                 }
 
               }
-
             }
+            //NOTE: Si no hay nada en la bd
+          }else{
+              $sql = "INSERT INTO clientes VALUES(NULL, '$nombre', '$ruc', '$direccion', $numero_telefono)";
+              $insert = $db->query($sql);
 
+              if($insert){
+                echo "Me cree<br>";
+              }else{
+                echo "No me cree<br>";
+              }
+            }
           }
-
         }
-
         //Cerrar recursos
         fclose($f);
         $db->close();

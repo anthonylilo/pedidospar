@@ -31,7 +31,9 @@
             $nombre = $data[1];
             $precio = $data[2];
 
-            while($prods = $leerDb->fetch_object()){
+            if($leerDb->num_rows){
+              while($prods = $leerDb->fetch_object()){
+
               $codedb = $prods->code;
 
               if($codedb == $code){
@@ -56,12 +58,20 @@
                   echo "No me cree<br>";
                 }
 
+                }
               }
+              //NOTE: Si no hay nada en la bd
+            }else{
+              $sql = "INSERT INTO productos VALUES(NULL, $code, '$nombre', $precio)";
+              $insert = $db->query($sql);
 
+              if($insert){
+                  echo "Me cree<br>";
+              }else{
+                  echo "No me cree<br>";
+              }
             }
-
           }
-
         }
 
         //Cerrar recursos
