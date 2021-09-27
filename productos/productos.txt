@@ -1,6 +1,10 @@
-123456789;Coca Cola 350ml;60000
-987654321;Pepsi lata;24000
-456123;Mirinda 2lts;20000
-123456;pilsen 269ml;3500
-987654;norte 354ml;2200
-456789;Corona pack 220ml;42000
+120;Coca cola 3lts;40000
+121;Pepsi lata 330ml;4000
+122;Guarana 2lts;20000
+123;Pilsen pack 269ml;32000
+124;Norte pack 354ml;2200
+125;Corona pack 220ml x6;40000
+126;Taza de vengadores;3200
+120121;Cholas de cars;15000
+127;Cerveza Cerro;12000
+128;Destornillador;5000

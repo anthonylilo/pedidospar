@@ -1,9 +1,7 @@
 <?php
 
     $path = '../productos/productos.txt';
-    require_once '../configs/db.php';
-
-    $db = Database::connect();
+    require_once 'utils.php';
 
     if(!file_exists($path))
     {
@@ -24,59 +22,15 @@
 
           if(current($data)){
 
-            $sql="SELECT * FROM productos";
-            $leerDb = $db->query($sql);
-
             $code = $data[0];
             $nombre = $data[1];
             $precio = $data[2];
 
-            if($leerDb->num_rows){
-              while($prods = $leerDb->fetch_object()){
-
-              $codedb = $prods->code;
-
-              if($codedb == $code){
-
-                $sql = "UPDATE productos SET nombre='$nombre', precio=$precio WHERE code=$code";
-                $save = $db->query($sql);
-
-                if($save){
-                  echo "Me actualice<br>";
-                }else{
-                  echo "No me actualice<br>";
-                }
-                
-              }else{
-
-                $sql = "INSERT INTO productos VALUES(NULL, $code, '$nombre', $precio)";
-                $insert = $db->query($sql);
-
-                if($insert){
-                  echo "Me cree<br>";
-                }else{
-                  echo "No me cree<br>";
-                }
-
-                }
-              }
-              //NOTE: Si no hay nada en la bd
-            }else{
-              $sql = "INSERT INTO productos VALUES(NULL, $code, '$nombre', $precio)";
-              $insert = $db->query($sql);
-
-              if($insert){
-                  echo "Me cree<br>";
-              }else{
-                  echo "No me cree<br>";
-              }
-            }
+            compararcodigo($code,$nombre,$precio);
           }
         }
-
         //Cerrar recursos
         fclose($f);
-        $db->close();
         unlink($path);
     }
 ?>

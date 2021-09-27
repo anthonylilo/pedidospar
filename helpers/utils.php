@@ -70,3 +70,50 @@ class Utils{
     return $value;
   }
 }
+
+function comparecode($code,$nombre,$precio){
+  require_once '../configs/db.php';
+
+  $db = Database::connect();
+  $sql = "INSERT INTO productos(code,nombre,precio) VALUES('$code','$nombre',$precio) ON DUPLICATE KEY UPDATE nombre = '$nombre', precio = $precio";
+  $leerDb = $db->query($sql);
+
+  $result = false;
+  if($leerDb){
+    echo "Se incerto o actualizo";
+  }
+
+}
+
+function compararcodigo($code,$nombre,$precio){
+  require_once '../configs/db.php';
+
+  $db = Database::connect();
+  $sql = "SELECT COUNT(*) FROM `productos` WHERE code='$code'";
+  $leerDb = $db->query($sql);
+  $resultado = $leerDb->fetch_assoc();
+
+  if($resultado['COUNT(*)']>0){
+
+    $sql = "UPDATE productos SET nombre='$nombre', precio=$precio WHERE code='$code'";
+    $save = $db->query($sql);
+
+    if($save){
+      echo "Me actualice<br>";
+    }else{
+      echo "No me actualice<br>";
+    }
+    
+  }else{
+
+    $sql = "INSERT INTO productos VALUES(NULL, '$code', '$nombre', $precio)";
+    $insert = $db->query($sql);
+
+    if($insert){
+      echo "Me cree<br>";
+    }else{
+      echo "No me cree<br>";
+    }
+
+  }
+}
