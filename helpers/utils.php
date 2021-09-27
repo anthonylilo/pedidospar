@@ -117,3 +117,36 @@ function compararcodigo($code,$nombre,$precio){
 
   }
 }
+
+function compararruc($ruc,$nombre,$direccion,$numero_telefono){
+  require_once '../configs/db.php';
+
+  $db = Database::connect();
+  $sql = "SELECT COUNT(*) FROM `clientes` WHERE ruc='$ruc'";
+  $leerDb = $db->query($sql);
+  $resultado = $leerDb->fetch_assoc();
+
+  if($resultado['COUNT(*)']>0){
+
+    $sql = "UPDATE clientes SET nombre='$nombre', direccion='$direccion', numero_telefono='$numero_telefono' WHERE ruc='$ruc'";
+    $save = $db->query($sql);
+
+    if($save){
+      echo "Me actualice<br>";
+    }else{
+      echo "No me actualice<br>";
+    }
+    
+  }else{
+
+    $sql = "INSERT INTO clientes VALUES(NULL, '$nombre', '$ruc', '$direccion', $numero_telefono)";
+    $insert = $db->query($sql);
+
+    if($insert){
+      echo "Me cree<br>";
+    }else{
+      echo "No me cree<br>";
+    }
+
+  }
+}
