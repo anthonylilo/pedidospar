@@ -36,7 +36,7 @@
                         </div>
                     </div>
 
-                    <form action="<?=base_url?>pedido/guardarventa" method="POST">
+                    <form action="<?=base_url?>pedido/test" method="POST">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -66,7 +66,6 @@
                                                         style="color:red; font-weight: bold"
                                                         id="TotalVenta"
                                                         placeholder="Username">
-                                                    <input name="IdUser" value="1" type="hidden">
                                                 </div>
                                             </div>
                                         </div>

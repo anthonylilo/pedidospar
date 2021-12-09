@@ -39,7 +39,7 @@ $('.eliminar_cliente').click(function (e) {
             $
                 .ajax({
                     //url: 'http://pedidos.micropar.com/clientes/eliminar',
-                    url: 'http://localhost/micropar-pedidos/clientes/eliminar',
+                    url: 'http://localhost/paginas/pedidospar/clientes/eliminar',
                     type: 'POST',
                     async: true,
                     data: {
@@ -86,7 +86,7 @@ $('.eliminar_producto').click(function (e) {
             $
                 .ajax({
                     //url: 'http://pedidos.micropar.com/productos/eliminar',
-                    url: 'http://localhost/micropar-pedidos/productos/eliminar',
+                    url: 'http://localhost/paginas/pedidospar/productos/eliminar',
                     type: 'POST',
                     async: true,
                     data: {
@@ -135,7 +135,7 @@ const formatoMexico = (number) => {
 function buscar_datos(consulta){
 	$.ajax({
 		//url : 'http://pedidos.micropar.com/pedido/buscar',
-        url : 'http://localhost/micropar-pedidos/pedido/buscar',
+        url : 'http://localhost/paginas/pedidospar/pedido/buscar',
 		type : 'POST',
 		dataType : 'html',
         async : true,
@@ -162,6 +162,7 @@ function buscar_datos(consulta){
             var idprod = $(this).attr('IP');
             var nombreProd = $(this).attr('NP');
             var precioProd = $(this).attr('PP').replaceAll(',', '.');
+            var codeProd = $(this).attr('CP');
 
             var totalProd = precioProd * CantProd;
 
@@ -174,6 +175,7 @@ function buscar_datos(consulta){
                     '<tr>'+
                         '<td><button class="btn btn-danger" np2='+ nombreProd +' id="dltprod'+idprod+'">x</button></td>'+
                         '<input name="IdProd[]" value=' + idprod + ' type="hidden">' +
+                        '<input name="CodProd[]" value=' + codeProd + ' type="hidden">' +
                         '<td>' + nombreProd + '</td>'+
                         '<td><input readonly name="PrecProdV[]" type="text" value="' + precioProdClear + '" id="precio'+idprod+'" class="text-center precioPV" style="width:70px;color:red;"></td>'+
                         '<td><input name="CantProdV[]" style="width:50px;" type="text" min="1" value="' + CantProd + '" id="canti'+idprod+'" ></td>'+
