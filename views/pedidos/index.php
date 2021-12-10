@@ -36,7 +36,7 @@
                         </div>
                     </div>
 
-                    <form action="<?=base_url?>pedido/test" method="POST">
+                    <form action="<?=base_url?>pedido/guardarventa" method="POST">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">

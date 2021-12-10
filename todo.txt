@@ -2,41 +2,25 @@
 
 6)Precio en gs (PHP) New txt
 /**
-array(7) {
-  
-   ["cliente_id"]=> string(1) "4"
-   
-   ["TotalVentaGeneral"]=> string(7) "320.000"
-   
-   ["IdProd"]=> array(1) { [0]=> string(1) "4" } 
-   
-   ["CodProd"]=> array(1) { [0]=> string(3) "123" } 
-   
-   ["PrecProdV"]=> array(1) { [0]=> string(6) "32.000" } 
-   
-   ["CantProdV"]=> array(1) { [0]=> string(2) "10" } 
-   
-   ["TotalProdV"]=> array(1) { [0]=> string(7) "320.000" } 
-   
-   }
-
-   array(7) { 
-     
-    ["cliente_id"]=> string(1) "1" 
+    string(1) "1" 
     
-    ["TotalVentaGeneral"]=> string(7) "550.000" 
-    
-    ["IdProd"]=> array(3) { [0]=> string(1) "4" [1]=> string(1) "3" [2]=> string(1) "8" } 
-    
-    ["CodProd"]=> array(3) { [0]=> string(3) "123" [1]=> string(3) "122" [2]=> string(6) "120121" } 
-    
-    ["PrecProdV"]=> array(3) { [0]=> string(6) "32.000" [1]=> string(6) "20.000" [2]=> string(6) "15.000" } 
-    
-    ["CantProdV"]=> array(3) { [0]=> string(2) "10" [1]=> string(2) "10" [2]=> string(1) "2" } 
-    
-    ["TotalProdV"]=> array(3) { [0]=> string(7) "320.000" [1]=> string(7) "200.000" [2]=> string(6) "30.000" } 
-    
-    }
+    array(7) { 
+        
+        ["cliente_id"]=> string(1) "2" 
+        
+        ["TotalVentaGeneral"]=> string(6) "40.000" 
+        
+        ["IdProd"]=> array(1) { [0]=> string(1) "2" } 
+        
+        ["CodProd"]=> array(1) { [0]=> string(3) "121" } 
+        
+        ["PrecProdV"]=> array(1) { [0]=> string(5) "4.000" } 
+        
+        ["CantProdV"]=> array(1) { [0]=> string(2) "10" } 
+        
+        ["TotalProdV"]=> array(1) { [0]=> string(6) "40.000" } 
+        
+        }
 **/
 1)RUC||CI;
 COD_USUARIO;

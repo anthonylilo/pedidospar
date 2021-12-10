@@ -125,16 +125,15 @@ class Pedidos{
   }
 
   public function savePedido(){
-    $sql = "INSERT INTO pedidos VALUES(NULL, 
+    $sql = "INSERT INTO pedidos VALUES(NULL,
     '{$this->getUsuario_id()}',
     '{$this->getCliente_id()}',
     {$this->getTotal()},
-    CURDATE(),
-    CURTIME(),
+    '{$this->getFecha()}',
     'Pendiente de revisión')";
     $save = $this->db->query($sql);
 
-		//echo mysqli_error($this->db);
+		echo mysqli_error($this->db);
 
     $result = false;
     if($save){

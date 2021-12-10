@@ -29,10 +29,13 @@ class pedidoController{
 
         $total = intval(str_replace(".", "", $total));
 
+        $date = date("ymdHis");
+
         $venta = new Pedidos();
         $venta->setUsuario_id($usuario_id);
         $venta->setCliente_id($cliente_id);
         $venta->setTotal($total);
+        $venta->setFecha($date);
 
         $save = $venta->savePedido();
 
@@ -42,12 +45,30 @@ class pedidoController{
         $venta->setUnidades($CantProdV);
 
         $save_cobro = $venta->save_linea();
-        
-        if($save && $save_cobro){
-          $_SESSION['pedido'] = 'complete';
-        }else{
-          $_SESSION['pedido'] = 'failed';
+
+        $archivo = fopen('./ventasresumen/venta_'.$date.'.txt','a');
+
+        for($count = 0; $count<count($IdProd); $count++){
+
+          $contenido = array(
+            $cliente_id,
+            $_SESSION['identity']->code_user,
+            $_POST['CodProd'][$count],
+            $CantProdV[$count]
+          );
+
+          $separado_por_comas = implode(";", $contenido);
+
+          fputs($archivo, $separado_por_comas . ";");
+
         }
+
+          if($save && $save_cobro){
+            fclose($archivo);  
+            $_SESSION['pedido'] = 'complete';
+          }else{
+            $_SESSION['pedido'] = 'failed';
+          }
 
         }else{
         $_SESSION['pedido'] = 'failed';
@@ -124,10 +145,5 @@ class pedidoController{
     $pedidos = $pedido->getAll();
     
     require_once 'views/pedidos/all.php';
-  }
-
-  public function test(){
-    var_dump($_POST);
-    die;
   }
 }
