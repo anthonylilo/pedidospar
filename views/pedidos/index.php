@@ -44,7 +44,7 @@
                                         <button class="btn btn-success card-title" id="btnpedido">Realizar pedido</button>
                                         <div class="input-group mb-3">
                                             <label>Selecciona tu cliente (Solo puedes elegir a 1)</label>
-                                            <select class="form-select" name="cliente_id" required="required">
+                                            <select class="form-select mi-selector" name="cliente_id" required="required">
                                                 <?php while($cli = $clientes->fetch_object()):?>
                                                 <option value="<?=$cli->id?>"><?=$cli->nombre?>
                                                     <?=$cli->ruc?></option>
@@ -108,6 +108,8 @@
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<?=base_url?>js/js.js"></script>
 

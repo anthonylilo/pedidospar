@@ -16,6 +16,12 @@ $("#montoprestamo").on({
   }
 });*/
 
+jQuery(document).ready(function($){
+    $(document).ready(function() {
+        $('.mi-selector').select2();
+    });
+});
+
 //NOTE: Eliminar cliente
 $('.eliminar_cliente').click(function (e) {
     e.preventDefault();

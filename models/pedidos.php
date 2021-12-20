@@ -83,8 +83,14 @@ class Pedidos{
     return $clientes;
   }
 
+  public function getRucCliente(){
+    $sql = "SELECT ruc FROM clientes WHERE id = {$this->getCliente_id()}";
+    $ruc = $this->db->query($sql);
+    return $ruc->fetch_object();
+  }
+
   public function getAll(){
-    $sql = "SELECT p.*, cl.nombre, uss.nombre as 'ussname' FROM pedidos p "
+    $sql = "SELECT p.*, cl.nombre, uss.nombre as 'vendedor' FROM pedidos p "
     . "INNER JOIN clientes cl ON cl.id = p.cliente_id " 
     . "INNER JOIN usuarios uss ON uss.id = p.usuario_id " 
     . "ORDER BY p.id DESC";

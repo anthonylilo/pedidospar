@@ -46,20 +46,23 @@ class pedidoController{
 
         $save_cobro = $venta->save_linea();
 
+        $venta->setCliente_id($cliente_id);
+        $ruc = $venta->getRucCliente();
+
         $archivo = fopen('./ventasresumen/venta_'.$date.'.txt','a');
 
         for($count = 0; $count<count($IdProd); $count++){
 
           $contenido = array(
-            $cliente_id,
             $_SESSION['identity']->code_user,
+            $ruc->ruc,
             $_POST['CodProd'][$count],
             $CantProdV[$count]
           );
 
           $separado_por_comas = implode(";", $contenido);
 
-          fputs($archivo, $separado_por_comas . ";");
+          fputs($archivo, $separado_por_comas . ";" . PHP_EOL );
 
         }
 
