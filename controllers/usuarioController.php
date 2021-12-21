@@ -10,7 +10,9 @@ class usuarioController{
   public function register()
   {
     Utils::isAdmin();
+    require_once 'views/layout/header.php'; 
     require_once 'views/usuario/registro.php';
+    require_once 'views/layout/footer.php';
   }
 
   public function save()
@@ -44,7 +46,16 @@ class usuarioController{
   }
 
   public function iniciarsesion(){
-    require_once 'views/usuario/login.php';
+    if(isset($_SESSION['identity'])){
+
+      header("Location:".base_url);
+      echo "existe sesión";
+
+    }else{
+      require_once 'views/layout/header.php';
+      require_once 'views/usuario/login.php';
+      require_once 'views/layout/footer.php';
+    }
   }
 
   public function login()
@@ -64,11 +75,14 @@ class usuarioController{
         if($identity->rol == 'admin'){
           $_SESSION['admin'] = true;
         }
+
+        header("Location:".base_url);
+
       }else{
         $_SESSION['error_login'] = "Identificacion fallida !!";
+        header("Location:".base_url."usuario/iniciarsesion");
       }
     }
-    header("Location:".base_url);
   }
 
   public function logout()

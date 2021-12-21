@@ -1,4 +1,3 @@
-<?php require_once 'views/layout/header.php'; ?>
 <div class="container">
     <div class="m-0 row justify-content-center text-center">
         <h1>Pedidos Online</h1>
@@ -9,7 +8,11 @@
             </li>
         <?php else: ?>
             <li class="list-group-item">Usuario:
+                <?php if(is_array($_SESSION['identity'])){ ?>
+                <?=$_SESSION['identity']['username']?>
+                <?php }else{ ?>
                 <?=$_SESSION['identity']->username?>
+                <?php } ?>
             </li>
 
             <li class="list-group-item">
@@ -49,4 +52,3 @@
         </ul>
     </div>
 </div>
-<?php require_once 'views/layout/footer.php'; ?>

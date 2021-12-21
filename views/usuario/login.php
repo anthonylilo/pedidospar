@@ -1,7 +1,10 @@
-<?php require_once 'views/layout/header.php'; ?>
 <div class="container">
     <div class="m-0 row justify-content-center text-center">
         <form class="form-signin" method="POST" action="<?=base_url?>usuario/login">
+                <?php if(isset($_SESSION['error_login'])){
+                echo "<h3 style='color:red;'>". $_SESSION['error_login'] . "</h3>";
+                unset($_SESSION['error_login']);
+                } ?>
                 <h1 class="h3 mb-3 font-weight-normal">Inicie sesión</h1>
                 <label for="inputEmail" class="sr-only">Usuario</label>
                 <input
@@ -29,5 +32,4 @@
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
                         </form>
                     </div>
-                </div>
-<?php require_once 'views/layout/footer.php'; ?>               
+                </div>        

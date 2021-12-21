@@ -1,4 +1,6 @@
 <?php
+$some_name = session_name("some_name");
+session_set_cookie_params(60*60*24*14);
 session_start();
 require_once 'autoload.php';
 require_once 'configs/db.php';

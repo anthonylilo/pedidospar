@@ -1,4 +1,3 @@
-<?php require_once 'views/layout/header.php'; ?>
 <div class="container">
     <div class="row">
         <h1>Registrar Usuario</h1>
@@ -41,4 +40,3 @@ if(isset($_SESSION['register']) && $_SESSION['register'] == 'complete'): ?>
         </form>
     </div>
 </div>
-<?php require_once 'views/layout/footer.php'; ?>
